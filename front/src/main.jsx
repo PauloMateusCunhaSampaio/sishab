@@ -1,22 +1,22 @@
-import React, { Children } from 'react' 
+import React, { Children } from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './Home'
-import Consulta from './Consulta'
-import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Home from './routes/Home';
+import './styles.css'
+import Consultas from './routes/Consultas';
+
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  { path: "/consulta", element: <Consulta /> },
+  { path: "/", element: <Home />, component: Home },
+  { path: "/consultas", element: <Consultas />, component: Consultas },
 ])
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </React.StrictMode>,
 )
 
