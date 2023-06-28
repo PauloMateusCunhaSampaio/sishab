@@ -18,7 +18,7 @@ export default function Consultas() {
     "10. Qual a quantidade de unidades com valor de contrapartida não nulo?"]
 
     function handleClick(e) {
-        const url = "http://ec2-3-80-147-155.compute-1.amazonaws.com:6969/" + value.split(".")[0].trim();
+        const url = "http://ec2-3-80-147-155.compute-1.amazonaws.com:8081/" + value.split(".")[0].trim();
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
