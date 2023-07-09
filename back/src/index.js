@@ -1,7 +1,7 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
-var port = 6969;
+var port = 8081;
 
 var { connectDatabase, dropDatabase, sendQuery } = require('./database');
 var { queries } = require('./config');
@@ -26,7 +26,7 @@ app.get('/:queryNum', async function (req, res) {
             return;
         }
         let query = queries[req.params.queryNum - 1];
-        // const query = "SELECT DISTINCT txt_uf FROM sishab";
+        
         console.log("Checking query ...", query);
         const response = await sendQuery(query);
         res.json({
