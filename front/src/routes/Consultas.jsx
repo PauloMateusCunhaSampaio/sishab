@@ -6,7 +6,8 @@ export default function Consultas() {
     const caixinha = useId()
     const [value, setValue] = useState("1. Qual a quantidade de apartamentos envolvidos?")
     const [resultado, setResultado] = useState([])
-    const array = ["1. Qual a quantidade de apartamentos envolvidos?",
+    const array = [
+    "1. Qual a quantidade de apartamentos envolvidos?",
     "2. Qual a quantidade de casas envolvidas?",
     "3. Qual a quantidade de casas sobrepostas envolvidas?",
     "4. Quantos pertencem ao PMCMV - \"Programa Minha Casa Minha Vida\"?",
@@ -15,15 +16,16 @@ export default function Consultas() {
     "7. Quantos tiveram sua obra entregue ou concluída?",
     "8. Qual a quantidade de unidades entregues?",
     "9. Qual a quantidade de unidades contratadas?",
-    "10. Qual a quantidade de unidades com valor de contrapartida não nulo?"]
+    "10. Qual a quantidade de unidades com valor de contrapartida não nulo?"
+    ]
 
     function handleClick(e) {
-        const url = "http://ec2-3-80-147-155.compute-1.amazonaws.com:8081/" + value.split(".")[0].trim();
+        const url = "http://52.55.212.113:8081/" + value.split(".")[0].trim();
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
-                typeof data.response[0] === "string" ? setResultado(data.response[0].count) : setResultado(data.response[0])
-                setResultado(data.response[0].count)
+                
+                setResultado(Object.values(data.response[0])[0])
                 console.log(data)
             }
             ).catch((error) => {setResultado("Erro ao consultar")})
