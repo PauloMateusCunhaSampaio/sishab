@@ -1,7 +1,7 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
-var port = 6969;
+var port = 8081;
 
 var { connectDatabase, dropDatabase, sendQuery } = require('./database');
 var { queries } = require('./config');
