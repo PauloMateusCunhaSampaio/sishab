@@ -34,11 +34,11 @@ export default function Consultas() {
 
     return (
         <>
+            <Navbar />
             <header>
                 <h1>Consultas</h1>
             </header>
 
-            <Navbar />
 
             <section>
                 <h2>Selecione uma consulta:</h2>
