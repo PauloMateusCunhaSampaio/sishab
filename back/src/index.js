@@ -4,7 +4,7 @@ var app = express();
 var port = 8081;
 
 var { connectDatabase, dropDatabase, sendQuery } = require('./database');
-var { queries } = require('./config');
+var { questions, helpers } = require('./config');
 
 connectDatabase();
 
@@ -17,15 +17,29 @@ app.get('/', function (req, res) {
     return;
 });
 
-app.get('/:queryNum', async function (req, res) {
+app.get('/listagens/estados', async function (req, res) {
+    
     try {
-        if (req.params.queryNum > queries.length || req.params.queryNum < 1) {
+        console.log("Checking query ...", helpers.estados);
+        const response = await sendQuery(helpers.estados);
+        res.json(response);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(error);
+    }
+    return;
+});
+
+app.get('/pergunta/:queryNum', async function (req, res) {
+    
+    try {
+        if (req.params.queryNum > questions.length || req.params.queryNum < 1) {
             res.status(400).json({
                 error: "Invalid query number"
             });
             return;
         }
-        let query = queries[req.params.queryNum - 1];
+        let query = questions[req.params.queryNum - 1];
         
         console.log("Checking query ...", query);
         const response = await sendQuery(query);

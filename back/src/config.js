@@ -1,5 +1,5 @@
 module.exports = {
-    queries: [
+    questions: [
         "SELECT COUNT (*) FROM sishab WHERE txt_tipologia = 'Apartamento'",
         "SELECT COUNT (*) FROM sishab WHERE txt_tipologia = 'Casa'",
         "SELECT COUNT (*) FROM sishab WHERE txt_tipologia = 'Casa Sobreposta'",
@@ -10,5 +10,8 @@ module.exports = {
         "SELECT SUM(CAST(qtd_uh_entregues AS INT)) FROM sishab",
         "SELECT SUM(CAST(qtd_uh_contratadas AS INT)) FROM sishab",
         "SELECT COUNT(*) FROM sishab WHERE vlr_contrapartida <>'0,00' AND vlr_contrapartida IS NOT NULL;",
-    ]
+    ],
+    helpers: {
+        estados: "SELECT DISTINCT txt_uf FROM sishab ORDER BY txt_uf"
+    }
 };
