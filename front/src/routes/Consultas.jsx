@@ -21,7 +21,7 @@ export default function Consultas() {
     ]
 
     function handleClick(e) {
-        const url = "http://52.55.212.113:8081/" + value.split(".")[0].trim();
+        const url = "http://52.55.212.113:8081/pergunta/" + value.split(".")[0].trim();
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
