@@ -1,10 +1,10 @@
 var { Client } = require("pg");
 const databaseConnectionInfo = {
-    host: 'database-pw2.cox34sypgf3r.us-east-1.rds.amazonaws.com',
+    host: 'database-pw.cox34sypgf3r.us-east-1.rds.amazonaws.com',
     port: 5432,
-    database: 'bd_pw',
-    user: 'postgres',
-    password: 'postgres123',
+    database: 'databasePW',
+    user: 'userpw',
+    password: 'password',
 }
 const databaseClient = new Client(databaseConnectionInfo);
 
