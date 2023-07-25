@@ -1,6 +1,8 @@
 import React, { useId, useState } from 'react'
 import Navbar from '../components/navbar'
 import Btn from '../components/Btn'
+import { consulta } from '../API/consultas.js'
+
 
 export default function Consultas() {
 
@@ -20,16 +22,12 @@ export default function Consultas() {
         "10. Qual a quantidade de unidades com valor de contrapartida não nulo?"
     ]
 
-    function handleClick(e) {
-        const url = "https://sishab-back.onrender.com/pergunta/" + value.split(".")[0].trim();
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
+    const handleClick = async (e) => {
+        e.preventDefault();
+        const data = await consulta(value.split(".")[0].trim())
+        console.log(data) 
+        setResultado(Object.values(data.response[0])[0])
 
-                setResultado(Object.values(data.response[0])[0])
-                console.log(data)
-            }
-            ).catch((error) => { setResultado("Erro ao consultar") })
     }
 
     return (
