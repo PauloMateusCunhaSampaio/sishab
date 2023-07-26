@@ -11,7 +11,13 @@ module.exports = {
         "SELECT SUM(CAST(qtd_uh_contratadas AS INT)) FROM sishab",
         "SELECT COUNT(*) FROM sishab WHERE vlr_contrapartida <>'0,00' AND vlr_contrapartida IS NOT NULL;",
     ],
+    user: (user, pass, email) => {
+        create: `INSERT INTO accounts(username, password, email) VALUES( ${user}, ${pass}, ${email} )`;
+    },
     helpers: {
         estados: "SELECT DISTINCT txt_uf FROM sishab ORDER BY txt_uf"
     }
 };
+
+
+function f()
