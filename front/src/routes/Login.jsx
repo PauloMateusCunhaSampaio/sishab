@@ -1,8 +1,9 @@
 import React from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import { useState } from "react"
 import Btn from '../components/Btn'
 import {log} from '../API/log.js'
+
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -25,25 +26,26 @@ export default function Login() {
 
         return (
             <>
-                <Navbar />
+                <Navbar cons={false} />
                 <header>
-                    <h1>Login</h1>
+                <h1>Login</h1>    
                 </header>
-
+                
                 <section>
+                    
                     <h2>Bem vindo</h2>
                     <div id="login-container"></div>
                     <div className="card">
                         <p>Insira seus dados para acessar o sistema</p>
                     </div>
-                    <div className="containerLogin">
+                    <div className="container">
                         <div>
                             <p className="custom-paragraph">Email</p>
                             <input
                                 className='input'
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e, key) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
@@ -52,7 +54,7 @@ export default function Login() {
                                 className='input'
                                 type="senha"
                                 value={senha}
-                                onChange={(e) => setSenha(e.target.value)}
+                                onChange={(e, key) => setSenha(e.target.value)}
                             />
                         </div>
                         <div className='btnLogin'>

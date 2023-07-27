@@ -1,5 +1,5 @@
 import React, { useId, useState } from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import Btn from '../components/Btn'
 import { consulta } from '../API/consultas.js'
 
@@ -32,7 +32,7 @@ export default function Consultas() {
 
     return (
         <>
-            <Navbar />
+            <Navbar cons={true}/>
             <header>
                 <h1>Consultas</h1>
             </header>
