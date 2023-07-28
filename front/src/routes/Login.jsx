@@ -34,7 +34,6 @@ export default function Login() {
                 <section>
                     
                     <h2>Bem vindo</h2>
-                    <div id="login-container"></div>
                     <div className="card">
                         <p>Insira seus dados para acessar o sistema</p>
                     </div>
@@ -57,7 +56,7 @@ export default function Login() {
                                 onChange={(e, key) => setSenha(e.target.value)}
                             />
                         </div>
-                        <div className='btnLogin'>
+                        <div className='btn'>
                             <Btn txt={"Conectar"} click={e => handleClick(e)} />
                         </div>
                     </div>

@@ -32,7 +32,7 @@ export default function Home() {
                 <Navbar cons={false} />
                 <div>
                     <h1 className='aside'>Sistema de Habitação - SISHAB</h1>
-                    <div id="exclusive-container">
+                    <div id="home-container">
                     <h2>Current Location</h2>
                     <p>City: {currLocation} </p>
                     

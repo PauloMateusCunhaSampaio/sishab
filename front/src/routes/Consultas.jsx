@@ -40,11 +40,12 @@ export default function Consultas() {
 
             <section>
                 <h2>Selecione uma consulta:</h2>
-                <div id="consulta-container"></div>
                 <div className="card">
                     <p>Período de amostragem: 20/06/2007 à 30/11/2022</p>
                 </div>
 
+                <div id='consultas-container'>
+                <div id='select-cons'>
                 <select id="{caixinha}" name="consulta" onChange={e => setValue(e.target.value)} value={value}>
                     {array.map((item) => {
                         return (
@@ -53,8 +54,13 @@ export default function Consultas() {
                     })
                     }
                 </select>
+                </div>
+                <div id='btn-consultas'>
                 <Btn txt={"Consultar"} click={e => handleClick(e)} />
+                </div>
                 <div>
+
+                </div>
                     <p>Resultado da consulta:</p>
                     <p>{resultado}</p>
                 </div>
