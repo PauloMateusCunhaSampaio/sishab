@@ -1,8 +1,9 @@
 import React from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import { useState } from "react"
 import Btn from '../components/Btn'
 import {log} from '../API/log.js'
+
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -22,40 +23,43 @@ export default function Login() {
             
         }*/window.location.href = "/consultas";
     }
+    
 
         return (
             <>
-                <Navbar />
+                <Navbar cons={false} />
                 <header>
-                    <h1>Login</h1>
+                <h1>Login</h1>    
                 </header>
-
+                
                 <section>
+                    
                     <h2>Bem vindo</h2>
-                    <div id="login-container"></div>
                     <div className="card">
                         <p>Insira seus dados para acessar o sistema</p>
                     </div>
-                    <div className="containerLogin">
-                        <div>
-                            <p className="custom-paragraph">Email</p>
+                    <div className="container">
+                        <div className="custom-paragraph">
+                        <span>Email</span>
                             <input
                                 className='input'
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e, key) => setEmail(e.target.value)}
+                                placeholder='Digite seu email'
                             />
                         </div>
-                        <div>
-                            <p className="custom-paragraph">Senha</p>
+                        <div className="custom-paragraph">
+                            <span>Senha</span>
                             <input
                                 className='input'
                                 type="senha"
                                 value={senha}
-                                onChange={(e) => setSenha(e.target.value)}
+                                onChange={(e, key) => setSenha(e.target.value)}
+                                placeholder='Digite sua senha'
                             />
                         </div>
-                        <div className='btnLogin'>
+                        <div className='btn'>
                             <Btn txt={"Conectar"} click={e => handleClick(e)} />
                         </div>
                     </div>

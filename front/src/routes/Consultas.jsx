@@ -1,5 +1,5 @@
 import React, { useId, useState } from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import Btn from '../components/Btn'
 import { consulta } from '../API/consultas.js'
 
@@ -32,7 +32,7 @@ export default function Consultas() {
 
     return (
         <>
-            <Navbar />
+            <Navbar cons={true}/>
             <header>
                 <h1>Consultas</h1>
             </header>
@@ -40,11 +40,11 @@ export default function Consultas() {
 
             <section>
                 <h2>Selecione uma consulta:</h2>
-                <div id="consulta-container"></div>
                 <div className="card">
                     <p>Período de amostragem: 20/06/2007 à 30/11/2022</p>
                 </div>
 
+                <div id='consultas-container'>
                 <select id="{caixinha}" name="consulta" onChange={e => setValue(e.target.value)} value={value}>
                     {array.map((item) => {
                         return (
@@ -53,8 +53,12 @@ export default function Consultas() {
                     })
                     }
                 </select>
+                <div id='btn-consultas'>
                 <Btn txt={"Consultar"} click={e => handleClick(e)} />
+                </div>
                 <div>
+
+                </div>
                     <p>Resultado da consulta:</p>
                     <p>{resultado}</p>
                 </div>
