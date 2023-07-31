@@ -45,7 +45,6 @@ export default function Consultas() {
                 </div>
 
                 <div id='consultas-container'>
-                <div id='select-cons'>
                 <select id="{caixinha}" name="consulta" onChange={e => setValue(e.target.value)} value={value}>
                     {array.map((item) => {
                         return (
@@ -54,7 +53,6 @@ export default function Consultas() {
                     })
                     }
                 </select>
-                </div>
                 <div id='btn-consultas'>
                 <Btn txt={"Consultar"} click={e => handleClick(e)} />
                 </div>

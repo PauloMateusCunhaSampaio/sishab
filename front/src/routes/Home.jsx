@@ -32,9 +32,10 @@ export default function Home() {
                 <Navbar cons={false} />
                 <div>
                     <h1 className='aside'>Sistema de Habitação - SISHAB</h1>
+                    <img src="src/img/messinho.jpg" alt="messi"></img>
                     <div id="home-container">
-                    <h2>Current Location</h2>
-                    <p>City: {currLocation} </p>
+                    <h2>Localização atual</h2>
+                    <p className='custom-paragraph'>Cidade: {currLocation} </p>
                     
                     </div>
                 </div>

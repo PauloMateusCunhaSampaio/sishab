@@ -23,6 +23,7 @@ export default function Login() {
             
         }*/window.location.href = "/consultas";
     }
+    
 
         return (
             <>
@@ -38,22 +39,24 @@ export default function Login() {
                         <p>Insira seus dados para acessar o sistema</p>
                     </div>
                     <div className="container">
-                        <div>
-                            <p className="custom-paragraph">Email</p>
+                        <div className="custom-paragraph">
+                        <span>Email</span>
                             <input
                                 className='input'
                                 type="email"
                                 value={email}
                                 onChange={(e, key) => setEmail(e.target.value)}
+                                placeholder='Digite seu email'
                             />
                         </div>
-                        <div>
-                            <p className="custom-paragraph">Senha</p>
+                        <div className="custom-paragraph">
+                            <span>Senha</span>
                             <input
                                 className='input'
                                 type="senha"
                                 value={senha}
                                 onChange={(e, key) => setSenha(e.target.value)}
+                                placeholder='Digite sua senha'
                             />
                         </div>
                         <div className='btn'>

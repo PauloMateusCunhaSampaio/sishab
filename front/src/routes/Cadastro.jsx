@@ -9,6 +9,14 @@ export default function Cadastro() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+    const handleClick = async (e) => {
+        e.preventDefault();
+        console.log(nome, email, senha)
+
+        setEmail("")
+        setNome("")
+        setSenha("")
+    }
     return (
         <>
             <Navbar cons={false} />
