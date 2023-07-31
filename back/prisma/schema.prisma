@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model accounts {
+  user_id  Int    @id @default(autoincrement())
+  username String @unique @db.VarChar(50)
+  password String @db.VarChar(50)
+  email    String @unique @db.VarChar(255)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model sishab {
+  id                          Int       @default(autoincrement()) @id
+  txt_uf                      String?   @db.VarChar(2)
+  txt_municipio               String?   @db.VarChar(50)
+  txt_situacao_obra           String?   @db.VarChar(60)
+  txt_origem_contrato         String?   @db.VarChar(30)
+  txt_programa                String?   @db.VarChar(15)
+  txt_modalidade_programa     String?   @db.VarChar(30)
+  txt_faixa_grupo_renda       String?   @db.VarChar(30)
+  txt_apf_cod_empreendimento  String?   @db.VarChar(40)
+  txt_nome_empreendimento     String?   @db.VarChar(60)
+  txt_agente_financeiro       String?   @db.VarChar(40)
+  dte_assinatura_contrato     DateTime? @db.Timestamp(6)
+  num_ano_assinatura_contrato String?   @db.VarChar(15)
+  prc_obra                    String?   @db.VarChar(15)
+  vlr_operacao                String?   @db.VarChar(20)
+  vlr_contrapartida           String?   @db.VarChar(20)
+  vlr_liberado                String?   @db.VarChar(20)
+  dte_max_liberacao           DateTime? @db.Timestamp(6)
+  qtd_uh_contratadas          String?   @db.VarChar(15)
+  qtd_uh_entregues            String?   @db.VarChar(15)
+  txt_cnpj_proponente         String?   @db.VarChar(20)
+  txt_razao_social_proponente String?   @db.VarChar(60)
+  txt_endereco                String?   @db.VarChar(60)
+  txt_cep                     String?   @db.VarChar(15)
+  txt_tipologia               String?   @db.VarChar(20)
+}
