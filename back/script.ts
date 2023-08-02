@@ -1,15 +1,15 @@
-import { PrismaClient } from '@prisma/client'        
-const prisma = new PrismaClient()
+//import { PrismaClient } from '@prisma/client'        
+//const prisma = new PrismaClient()
 
-async function main() {
-    const user = await prisma.sishab.findMany({ where: { id: 1 } })
-    console.log(user)
-}
+const express = require('express')
+const app = express()
+const port = 3000
+const sishab_route = require('./routes/sishab.ts')
 
-main()
-    .catch(e => {
-        console.error(e.message)
-    })
-    .finally(async () => {
-        await prisma.$disconnect()
-    })
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use("/questions", sishab_route)
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
