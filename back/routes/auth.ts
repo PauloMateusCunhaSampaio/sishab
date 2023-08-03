@@ -3,7 +3,10 @@ import { auth } from "../controllers/accounts_controller";
 
 const routes = Router()
 
-routes.post('/cadastrar', auth.sign_up)
-routes.post('/login', auth.login)
+routes.route('/cadastrar')
+    .post(auth.sign_up);
+
+routes.route('/login')
+    .post(auth.login);
 
 module.exports = routes;
