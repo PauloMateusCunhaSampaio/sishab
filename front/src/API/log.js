@@ -1,23 +1,16 @@
-import axios from "axios";
+import {api} from "./api";
 
 export async function log(email, senha) {
-    
-    const url = 'https://sishab.onrender.com/auth/login'
-
-    const body = {
+    return api.post("auth/login", {
         email: email,
         password: senha
-    }
-
-    const req = await axios.post(url, body)
+    })
         .then((response) => {
-            console.log(response.data)
-            return response.data
-        })
+            return response
+        }
+        )
         .catch((error) => {
             return error
         })
-
-    return req
 
 }

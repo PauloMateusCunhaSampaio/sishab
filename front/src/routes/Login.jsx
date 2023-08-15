@@ -14,8 +14,7 @@ export default function Login() {
         e.preventDefault();
         const response = await log(email, senha)
         console.log(response)
-        window.location.href = "/consultas";
-        /*if(!(response.status == 200 && response.status)){
+        if(!(response.status == 200 && response.status)){
             alert("Erro ao se conectar")
         }
         else {
@@ -24,7 +23,7 @@ export default function Login() {
             localStorage.setItem("key", JSON.stringify(user.key));
             window.location.href = "/consultas";
         }
-       */
+       
         
     }
     

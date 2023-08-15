@@ -1,8 +1,7 @@
-import axios from "axios";
+import {api} from "./api";
 
 export async function consulta(i) {
-    const url = "https://sishab-back.onrender.com/pergunta/" + i;
-    const req = await axios.get(url)
+    return api().get("pergunta/" + i)
         .then((response) => {
             return response.data
         }
@@ -11,5 +10,21 @@ export async function consulta(i) {
             return error
         }
         )
-    return req
+    
+    
 }
+
+
+// export async function consulta(i) {
+//     const url = "https://sishab-back.onrender.com/pergunta/" + i;
+//     const req = await axios.get(url)
+//         .then((response) => {
+//             return response.data
+//         }
+//         )
+//         .catch((error) => {
+//             return error
+//         }
+//         )
+//     return req
+// }
