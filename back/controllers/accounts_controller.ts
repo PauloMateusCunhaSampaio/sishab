@@ -17,7 +17,8 @@ const sign_up = async (req: Request, res: Response) => {
             password,
         },
     })
-    res.json(account)
+    console.log('conta criada');
+    res.json(account);
 }
 
 const login = async (req: Request, res: Response) => {
