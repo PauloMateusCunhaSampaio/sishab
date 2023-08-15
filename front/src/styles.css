@@ -148,3 +148,10 @@ select{
   display: flex;
   margin-top: 20px;
 }
+
+.grafico{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

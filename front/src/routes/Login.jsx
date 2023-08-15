@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import { useState } from "react"
 import Btn from '../components/Btn'
 import {log} from '../API/log.js'
+//import { Location } from 'react-router-dom'
 
 
 export default function Login() {
@@ -11,17 +12,20 @@ export default function Login() {
 
     const handleClick = async (e) => {
         e.preventDefault();
-       /* const response = await log(email, senha)
+        const response = await log(email, senha)
         console.log(response)
-
-        if (!response) {
-            alert("Email ou senha incorretos")
+        window.location.href = "/consultas";
+        /*if(!(response.status == 200 && response.status)){
+            alert("Erro ao se conectar")
         }
         else {
-            user = response.data;
+            let user = response.data;
+            console.log(user)
             localStorage.setItem("key", JSON.stringify(user.key));
-            
-        }*/window.location.href = "/consultas";
+            window.location.href = "/consultas";
+        }
+       */
+        
     }
     
 

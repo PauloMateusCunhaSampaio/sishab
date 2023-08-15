@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export async function log(email, senha) {
-    //request
-    const url = 'https://sishab-back.onrender.com/login/'
+    
+    const url = 'https://sishab.onrender.com/auth/login'
 
     const body = {
         email: email,
-        senha: senha
+        password: senha
     }
 
     const req = await axios.post(url, body)
