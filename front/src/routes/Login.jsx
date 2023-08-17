@@ -12,9 +12,8 @@ export default function Login() {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const response = await log(email, senha)
-        console.log(response)
-        if(!(response.status == 200 && response.status)){
+        const response = await log(email, senha);
+        if(!(response.status == 200)){
             alert("Erro ao se conectar")
         }
         else {
