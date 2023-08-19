@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Btn from '../components/Btn'
 import { useState } from 'react';
+import { cadastro } from '../API/cadastro';
 
 
 export default function Cadastro() {
@@ -12,10 +13,8 @@ export default function Cadastro() {
     const handleClick = async (e) => {
         e.preventDefault();
         console.log(nome, email, senha)
-
-        setEmail("")
-        setNome("")
-        setSenha("")
+        const data = await cadastro(nome, email, senha);
+        
     }
     return (
         <>

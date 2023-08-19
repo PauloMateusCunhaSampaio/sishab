@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient().accounts
 import { Request, Response, NextFunction } from 'express'
 const jwt = require('jsonwebtoken')
-const { promisify } = require('util')
+const visitas_controller = require('./visitas_controller')
 
 const sign_token = (id: number) => {
     return jwt.sign({ id }, process.env.JWT_SECRET);
@@ -18,11 +18,12 @@ const sign_up = async (req: Request, res: Response) => {
         },
     })
     console.log('conta criada');
+    console.log(account);
     res.json(account);
 }
 
 const login = async (req: Request, res: Response) => {
-    const { email, password } = req.body
+    const { email, password, local } = req.body
 
     console.log(`${email}, ${password}`)
     if (!email || !password) {
@@ -42,6 +43,7 @@ const login = async (req: Request, res: Response) => {
     }
     else {
         const token = sign_token(account.user_id)
+        visitas_controller.new_visit(local, account.user_id)
         res.status(200).json({ token })
     }
 }
