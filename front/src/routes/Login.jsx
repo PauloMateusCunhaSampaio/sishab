@@ -12,6 +12,8 @@ export default function Login() {
 
     const handleClick = async (e) => {
         e.preventDefault();
+        const local = sessionStorage.getItem("safeLoc")
+        console.log(local)
         const response = await log(email, senha);
         if(!(response.status == 200)){
             alert("Erro ao se conectar")

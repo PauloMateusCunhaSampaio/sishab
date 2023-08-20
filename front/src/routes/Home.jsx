@@ -25,7 +25,7 @@ export default function Home() {
     const getLocation = async () => {
         loc()
         .then((data) => {
-            setCurrLocation(data.city)
+            setCurrLocation([data.city, data.region, data.country])
         })
     }
 
