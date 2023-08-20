@@ -8,18 +8,39 @@ const sign_token = (id: number) => {
     return jwt.sign({ id }, process.env.JWT_SECRET);
 }
 
-const sign_up = async (req: Request, res: Response) => {
-    const { email, password, username } = req.body
-    const account = await prisma.create({
-        data: {
-            username,
-            email,
-            password,
-        },
-    })
-    console.log('conta criada');
-    console.log(account);
-    res.json(account);
+const sign_up = async (req: Request, res: Response, next: NextFunction) => {
+    try{
+        const { email, password, username } = req.body
+        if (!email) {
+            console.log('missing email')
+            res.status(400).json({ error: 'missing email' })
+            return next()
+        }
+        if (!password) {
+            console.log('missing password')
+            res.status(400).json({ error: 'missing password' })
+            return next()
+        }
+        if (!username) {
+            console.log('missing username')
+            res.status(400).json({ error: 'missing username' })
+            return next()
+        }
+        console.log(`O email: ${email} tentou criar uma conta`)
+        const account = await prisma.create({
+            data: {
+                username,
+                email,
+                password,
+            },
+        })
+        console.log('conta criada');
+        console.log(account);
+        res.json(account);
+
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 const login = async (req: Request, res: Response, next: NextFunction) => {

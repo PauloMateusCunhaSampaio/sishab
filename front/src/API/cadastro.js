@@ -1,10 +1,10 @@
 import {api} from "./api";
 
 export async function cadastro(nome, email, senha) {
-    return api().post("auth/cadastro", {
+    return api.post("auth/cadastrar", {
         username: nome,
         email: email,
-        passowrd: senha
+        password: senha
     })
         .then((response) => {
             return response.data
