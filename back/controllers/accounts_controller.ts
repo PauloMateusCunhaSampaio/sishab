@@ -24,7 +24,7 @@ const sign_up = async (req: Request, res: Response) => {
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
     const { email, password, local } = req.body
-
+    
     if (!email || !password) {
         console.log('missing email or password')
         res.status(400).json({ error: 'missing email or password' })
@@ -51,6 +51,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         const token = sign_token(account.user_id)
         const visit = await visitas_controller.new_visit(local, account.user_id)
         if(!visit) {
+            console.log('error registering visit')
             res.status(500).json({ error: 'error registering visit' })
             return next()
         }
