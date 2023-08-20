@@ -4,62 +4,31 @@ import { Request, Response } from 'express'
 
 export async function new_visit(dados: { pais: string, cidade: string, estado: string }, user_id: number) {
     const { pais, cidade, estado } = dados;
-    prisma.lugar.findFirst({
-        where: {
+    
+    const visit = await prisma.visita.create({
+        data: {
+            user_id,
             pais,
             cidade,
-            estado
-        }
-    }).then((lugar) => {
-        if (lugar) {
-            console.log("achou o lugar: ", lugar)
-            prisma.visita.create({
-                data: {
-                    user_id: user_id,
-                    lugar_id: lugar.lugar_id,
-                    data: new Date()
-                }
-            })
-                .then((visita) => {
-                    console.log("criou a visita: ", visita)
-                })
-        }
-        else {
-            console.log("não achou o lugar")
-            prisma.lugar.create({
-                data: {
-                    pais,
-                    cidade,
-                    estado
-                }
-            }).then((lugar) => {
-                console.log("criou o lugar: ", lugar)
-                prisma.visita.create({
-                    data: {
-                        user_id: user_id,
-                        lugar_id: lugar.lugar_id,
-                        data: new Date()
-                    }
-                })
-                    .then((visita) => {
-                        console.log("criou a visita: ", visita)
-                    })
-            })
+            estado,
         }
     })
 }
 
 const count_visits_city = async (req: Request, res: Response) => {
-    const vis = await prisma.visita.count({
-        select: {
-            _all: true,
-        }
-        
+    const vis = await prisma.visita.groupBy({
+        by: ['cidade'],
+        _count: {
+            visita_id: true,
+        },
     })
 
+    let dados: {cidade: string, visitas: number}[] = [];
+    vis.forEach((log) => {
+        dados.push({cidade: log.cidade, visitas: log._count.visita_id})
+    })
+    res.json(dados);
 
-
-    res.json(vis)
 }
 
 export var visitas = {

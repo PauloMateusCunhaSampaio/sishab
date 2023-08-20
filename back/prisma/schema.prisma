@@ -7,17 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model lugar {
-  lugar_id Int      @id @default(autoincrement())
-  pais     String
-  cidade   String
-  estado   String
-}
-
 model visita {
   visita_id Int      @id @default(autoincrement())
   user_id   Int
-  lugar_id  Int
+  pais     String
+  cidade   String
+  estado   String
   data      DateTime @default(now())
 }
 
