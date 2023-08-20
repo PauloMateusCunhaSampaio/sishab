@@ -25,10 +25,10 @@ const sign_up = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
     const { email, password, local } = req.body
 
-    console.log(`${email}, ${password}`)
     if (!email || !password) {
         res.status(400).json({ error: 'missing email or password' })
     }
+    console.log(`O email: ${email} tentou logar`)
 
     const account = await prisma.findUnique({
         where: {
