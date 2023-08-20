@@ -1,4 +1,4 @@
-import React, { useId, useState } from 'react'
+import React, { useEffect, useId, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Btn from '../components/Btn'
 import { consulta } from '../API/consultas.js'
@@ -9,6 +9,7 @@ export default function Consultas() {
     const caixinha = useId()
     const [value, setValue] = useState("1. Qual a quantidade de apartamentos envolvidos?")
     const [resultado, setResultado] = useState([])
+    const [token, setToken] = useState('')
     const array = [
         "1. Qual a quantidade de apartamentos envolvidos?",
         "2. Qual a quantidade de casas envolvidas?",
@@ -24,11 +25,15 @@ export default function Consultas() {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const data = await consulta(value.split(".")[0].trim())
+        const data = await consulta(value.split(".")[0].trim(), token)
         console.log(data) 
-        setResultado(Object.values(data.response[0])[0])
+        setResultado(data)
 
     }
+
+    useEffect(() => {
+        setToken(localStorage.getItem("token"))
+    }, [])
 
     return (
         <>

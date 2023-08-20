@@ -1,15 +1,24 @@
 import {api} from "./api";
 
-export async function consulta(i) {
-    return api().get("pergunta/" + i)
-        .then((response) => {
-            return response.data
+export async function consulta(i, token) {
+    if (token) {
+        return api.get("pergunta/" + i, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                return response.data
+            }
+            )
+            .catch((error) => {
+                return error
+            }
+            )
         }
-        )
-        .catch((error) => {
-            return error
-        }
-        )
+    else {
+        return false
+    }
     
     
 }
