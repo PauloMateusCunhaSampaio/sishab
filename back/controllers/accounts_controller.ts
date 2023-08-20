@@ -22,11 +22,13 @@ const sign_up = async (req: Request, res: Response) => {
     res.json(account);
 }
 
-const login = async (req: Request, res: Response) => {
+const login = async (req: Request, res: Response, next: NextFunction) => {
     const { email, password, local } = req.body
 
     if (!email || !password) {
+        console.log('missing email or password')
         res.status(400).json({ error: 'missing email or password' })
+        return next()
     }
     console.log(`O email: ${email} tentou logar`)
 
@@ -36,15 +38,28 @@ const login = async (req: Request, res: Response) => {
         },
     })
     if (!account) {
+        console.log('account not found')
         res.status(404).json({ error: 'account not found' })
+        return next()
     }
     else if (account.password !== password) {
+        console.log('wrong password')
         res.status(401).json({ error: 'wrong password' })
+        return next()
     }
     else {
         const token = sign_token(account.user_id)
-        visitas_controller.new_visit(local, account.user_id)
-        res.status(200).json({ token })
+        const visit = await visitas_controller.new_visit(local, account.user_id)
+        if(!visit) {
+            res.status(500).json({ error: 'error registering visit' })
+            return next()
+        }
+        else{
+            console.log('visita registrada')
+            res.status(200).json({ token })
+            return next()
+        }
+        
     }
 }
 

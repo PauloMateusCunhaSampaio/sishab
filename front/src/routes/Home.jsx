@@ -1,33 +1,30 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { useState, useEffect } from 'react';
-import { loc } from '../API/location';
+import axios from 'axios';
 import Chart from 'react-google-charts';
 
 
 export default function Home() {
-    const [currLocation, setCurrLocation] = useState([]);
-    const l = sessionStorage.getItem("safeLoc")
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('');
+    const [pais, setPais] = useState('');
 
     useEffect(() => {
-        if(l)
-        {
-            setCurrLocation(l)
-        }
-        else
-        {
-            getLocation() 
-            sessionStorage.setItem("safeLoc", currLocation)
-        }
         
-    },[]);
-    
-    const getLocation = async () => {
-        loc()
-        .then((data) => {
-            setCurrLocation([data.city, data.region, data.country])
+        axios.get('https://ipapi.co/json').then((data) => {
+            setEstado(data.data.region)
+            setPais(data.data.country_name)
+            setCidade(data.data.city)
         })
-    }
+    },[]);
+
+    useEffect(() => {
+        localStorage.setItem("locCidade", cidade)
+        localStorage.setItem("locEstado", estado)
+        localStorage.setItem("locPais", pais)
+        console.log("LOCAL NO HOME", localStorage)
+    },[cidade]);
 
         return (
             <>
@@ -37,7 +34,7 @@ export default function Home() {
                     {/* <img src="src/img/messinho.jpg" alt="messi"></img> */}
                     <div id="home-container">
                     <h2>Localização atual</h2>
-                    <p className='custom-paragraph'>Cidade: {currLocation} </p>
+                    <p className='custom-paragraph'>Cidade: {cidade} </p>
                     </div>
                     <div className='grafico'>
                         <Chart 

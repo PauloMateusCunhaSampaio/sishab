@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from 'react-router-dom'
 
 export default function Navbar(props) {
-    let {cons} = props
+    let {cons, onClick} = props
     if(!cons){
        return (
         <nav>

@@ -3,16 +3,23 @@ const prisma = new PrismaClient()
 import { Request, Response } from 'express'
 
 export async function new_visit(dados: { pais: string, cidade: string, estado: string }, user_id: number) {
-    const { pais, cidade, estado } = dados;
     
-    const visit = await prisma.visita.create({
-        data: {
-            user_id,
-            pais,
-            cidade,
-            estado,
-        }
-    })
+    
+    try {
+        const { pais, cidade, estado } = dados;
+        const visit = await prisma.visita.create({
+            data: {
+                user_id,
+                pais,
+                cidade,
+                estado,
+            }
+        })
+    } catch (error) {
+
+        return false
+    } 
+    return true
 }
 
 const count_visits_city = async (req: Request, res: Response) => {

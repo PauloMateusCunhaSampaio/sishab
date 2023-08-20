@@ -1,33 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useState } from "react"
 import Btn from '../components/Btn'
-import {log} from '../API/log.js'
+import axios from 'axios'
 //import { Location } from 'react-router-dom'
 
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [local, setLocal] = useState({ cidade: "", estado: "", pais: "" });
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const local = sessionStorage.getItem("safeLoc")
-        console.log(local)
-        const response = await log(email, senha);
+
+        
+        
+        console.log(response);
+
         if(!(response.status == 200)){
             alert("Erro ao se conectar")
         }
         else {
             let user = response.data;
-            console.log(user)
-            localStorage.setItem("key", JSON.stringify(user.key));
+            localStorage.setItem("key",user.key);
             window.location.href = "/consultas";
         }
        
         
     }
     
+    useEffect(() => {
+        setLocal({
+            cidade: localStorage.getItem("locCidade"),
+            estado: localStorage.getItem("locEstado"),
+            pais: localStorage.getItem("locPais")
+        })
+    },[]);
+
 
         return (
             <>
@@ -68,6 +78,8 @@ export default function Login() {
                         </div>
                     </div>
                 </section>
+
+                <p>{local.cidade}</p>
 
             </>
         )
