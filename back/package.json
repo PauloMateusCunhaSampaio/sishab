@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.ts",
   "scripts": {
-    "standard": "node script.js",
+    "standard": "node script.ts",
     "devStart": "nodemon script.ts"
   },
   "keywords": [],
