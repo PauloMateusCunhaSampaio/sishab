@@ -3,12 +3,14 @@ import Navbar from '../components/Navbar'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Chart from 'react-google-charts';
+import { visitas_todas } from '../API/visitas';
 
 
 export default function Home() {
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
     const [pais, setPais] = useState('');
+    const [visitas, setVisitas] = useState([['Cidades', 'Acesso']]);
 
     useEffect(() => {
         
@@ -17,13 +19,21 @@ export default function Home() {
             setPais(data.data.country_name)
             setCidade(data.data.city)
         })
+
+        visitas_todas().then((data) => {
+            console.log("DATAAAAAAA: ", data.data)
+            data.data.forEach((item) => {
+                setVisitas(visitas => [...visitas, [item.cidade, item.visitas]])
+            })
+            console.log(visitas)
+        })
+
     },[]);
 
     useEffect(() => {
         localStorage.setItem("locCidade", cidade)
         localStorage.setItem("locEstado", estado)
         localStorage.setItem("locPais", pais)
-        console.log("LOCAL NO HOME", localStorage)
     },[cidade]);
 
         return (
@@ -42,14 +52,7 @@ export default function Home() {
                             height={'300px'}
                             chartType="PieChart"
                             loader={<div>Loading Chart</div>}
-                            data={[
-                                ['Cidades', 'Acesso'],
-                                ['Sao Paulo', 2],
-                                ['Rio de Janeiro', 2],
-                                ['Belo Horizonte', 2],
-                                ['Curitiba', 0],
-                                ['Porto Alegre', 0],
-                            ]}/>
+                            data={visitas}/>
                             
                     </div>
                 </div>

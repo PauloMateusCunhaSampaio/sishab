@@ -12,7 +12,6 @@ export default function Cadastro() {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        console.log(nome, email, senha)
         const data = await cadastro(nome, email, senha);
         
     }
