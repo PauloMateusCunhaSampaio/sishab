@@ -51,7 +51,7 @@ export default function Cadastro() {
                         <div className='custom-paragraph'>
                             <label>Senha</label>
                             <input
-                                type="senha"
+                                type="password"
                                 value={senha}
                                 onChange={(e, key) => setSenha(e.target.value)}
                                 placeholder='Digite sua senha'

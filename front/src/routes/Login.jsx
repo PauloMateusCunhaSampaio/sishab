@@ -73,7 +73,7 @@ export default function Login() {
             <span>Senha</span>
             <input
               className="input"
-              type="senha"
+              type="password"
               value={senha}
               onChange={(e, key) => setSenha(e.target.value)}
               placeholder="Digite sua senha"
