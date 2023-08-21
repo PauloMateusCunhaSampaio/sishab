@@ -21,11 +21,9 @@ export default function Home() {
         })
 
         visitas_todas().then((data) => {
-            console.log("DATAAAAAAA: ", data.data)
             data.data.forEach((item) => {
                 setVisitas(visitas => [...visitas, [item.cidade, item.visitas]])
             })
-            console.log(visitas)
         })
 
     },[]);
@@ -41,16 +39,15 @@ export default function Home() {
                 <Navbar cons={false} />
                 <div>
                     <h1 className='aside'>Sistema de Habitação - SISHAB</h1>
-                    {/* <img src="src/img/messinho.jpg" alt="messi"></img> */}
-                    <div id="home-container">
+                    <div id="location-container">
                     <h2>Localização atual</h2>
                     <p className='custom-paragraph'>Cidade: {cidade} </p>
                     </div>
-                    <div className='grafico'>
+                    <div id='chart-container'>
                         <Chart 
                             width={'500px'}
                             height={'300px'}
-                            chartType="PieChart"
+                            chartType="BarChart"
                             loader={<div>Loading Chart</div>}
                             data={visitas}/>
                             

@@ -31,7 +31,7 @@ export default function Cadastro() {
                 <form >
                     <div className='container'>
                         <div className='custom-paragraph'>
-                            <label>Nome:</label>
+                            <label>Nome</label>
                             <input
                                 type="text"
                                 value={nome}
@@ -40,7 +40,7 @@ export default function Cadastro() {
                             />
                         </div>
                         <div className='custom-paragraph'>
-                            <label>Email:</label>
+                            <label>Email</label>
                             <input
                                 type="email"
                                 value={email}
@@ -49,9 +49,9 @@ export default function Cadastro() {
                             />
                         </div>
                         <div className='custom-paragraph'>
-                            <label>Senha:</label>
+                            <label>Senha</label>
                             <input
-                                type="senha"
+                                type="password"
                                 value={senha}
                                 onChange={(e, key) => setSenha(e.target.value)}
                                 placeholder='Digite sua senha'

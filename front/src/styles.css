@@ -72,19 +72,28 @@ footer {
   flex-direction: column;
 }
 
-#home-container{
-  gap: 16px;
-  width: 300px;
-  margin: 0 auto;
-  padding: 40px;
+#chart-container {
+  flex: 0 0 calc(33.33% - 20px); 
+  margin-bottom: 20px; 
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.336);
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 200px;
-  left: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+}
+
+#location-container{
+  flex: 0 0 calc(33.33% - 20px); 
+  margin-bottom: 20px; 
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  max-width: 400px;
 }
 
 .custom-paragraph {
@@ -95,7 +104,7 @@ footer {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.726);
+  box-shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 #select-cons {
@@ -149,9 +158,9 @@ select{
   margin-top: 20px;
 }
 
-.grafico{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+input::placeholder {
+  color: #999;
+  font-style: italic;
 }
+
+
