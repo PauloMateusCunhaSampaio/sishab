@@ -26,7 +26,7 @@ export default function Consultas() {
     const handleClick = async (e) => {
         e.preventDefault();
         const data = await consulta(value.split(".")[0].trim(), token)
-        console.log(data) 
+        // console.log(data) 
         setResultado(data)
 
     }
