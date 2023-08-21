@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/auth/login", {
+      .post("https://sishab-back.onrender.com/auth/login", {
         email: email,
         password: senha,
         local: {
