@@ -53,7 +53,7 @@ export default function Consultas() {
                 <select id="{caixinha}" name="consulta" onChange={e => setValue(e.target.value)} value={value}>
                     {array.map((item) => {
                         return (
-                            <option value={item}>{item}</option>
+                            <option key={item} value={item}>{item}</option>
                         )
                     })
                     }
@@ -65,7 +65,8 @@ export default function Consultas() {
 
                 </div>
                     <p>Resultado da consulta:</p>
-                    <p>{resultado}</p>
+                    <li>{resultado}</li> 
+                    
                 </div>
             </section>
         </>
