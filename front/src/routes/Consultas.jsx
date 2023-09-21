@@ -36,20 +36,17 @@ export default function Consultas() {
     }, [])
 
     return (
-        <>
+        <div className='font-sans m-0 p-0'>
             <Navbar cons={true}/>
-            <header>
-                <h1>Consultas</h1>
-            </header>
+            <h1 className='text-4xl'>Consultas</h1>
 
 
             <section>
-                <h2>Selecione uma consulta:</h2>
-                <div className="card">
-                    <p>Período de amostragem: 20/06/2007 à 30/11/2022</p>
-                </div>
+                <div className='px-[20px] py-[20px]'>
+                <h2 className='text-2xl'>Selecione uma consulta:</h2>
+                
 
-                <div id='consultas-container'>
+                <div id='gap-[16px] w-fit m-0 m-auto px-[100px] py-[100px] border-1 border-solid rounded-lm shadow-lg flex'>
                 <select id="{caixinha}" name="consulta" onChange={e => setValue(e.target.value)} value={value}>
                     {array.map((item) => {
                         return (
@@ -58,17 +55,21 @@ export default function Consultas() {
                     })
                     }
                 </select>
-                <div id='btn-consultas'>
-                <Btn txt={"Consultar"} click={e => handleClick(e)} />
+                <div id='flex justify-evenly align-end m-20'>
+                <Btn txt={"Consultar"} click={e => handleClick(e)} className='bg-[#ccc]'/>
                 </div>
                 <div>
-
+                
+                <div className="bg-[#f0f0f0] rounded-sm px-[4px] py-[4py] shadow-sm mb-[20px] mt-12">
+                    <p>Período de amostragem: 20/06/2007 à 30/11/2022</p>
+                </div>
                 </div>
                     <p>Resultado da consulta:</p>
-                    <li>{resultado}</li> 
+                    <p >{resultado}</p> 
                     
                 </div>
+                </div>
             </section>
-        </>
+        </div>
     )
 }

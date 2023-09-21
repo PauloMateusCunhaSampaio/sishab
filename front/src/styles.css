@@ -8,7 +8,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 header {
   background-color: #333;
   color: #fff;
@@ -36,13 +35,6 @@ nav ul li a {
 
 section {
   padding: 20px;
-}
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
 }
 
 .card {

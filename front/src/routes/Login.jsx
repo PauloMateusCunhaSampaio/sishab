@@ -47,43 +47,37 @@ export default function Login() {
   }, []);
 
   return (
-    <>
+    <div className='font-sans m-0 p-0'>
       <Navbar cons={false} />
       <header>
-        <h1>Login</h1>
+        <h1 className='text-4xl flex align-center justify-center my-12'>Login</h1>
       </header>
 
       <section>
-        <h2>Bem vindo</h2>
-        <div className="card">
-          <p>Insira seus dados para acessar o sistema</p>
-        </div>
-        <div className="container">
-          <div className="custom-paragraph">
-            <span>Email</span>
+        <div className="gap-[16px] w-fit m-0 m-auto px-[40px] py-[40px] border-2 border-solid border-[#ccc] rounded-lg shadow-lg flex flex-col">
+          <div className="text-black font-bold px-[10py] py-[10px] pl-[2px] bg-[#f9f9f9] border-[#ccc] rounded-[5px] shadow-lg">
+            <span>Email</span>  
             <input
-              className="input"
+              className="w-full "
               type="email"
               value={email}
               onChange={(e, key) => setEmail(e.target.value)}
               placeholder="Digite seu email"
             />
           </div>
-          <div className="custom-paragraph">
+          <div className="text-black font-bold px-[10py] py-[10px] pl-[2px] bg-[#f9f9f9] border-[#ccc] rounded-[5px] shadow-lg">
             <span>Senha</span>
             <input
-              className="input"
+              className="w-full"
               type="password"
               value={senha}
               onChange={(e, key) => setSenha(e.target.value)}
               placeholder="Digite sua senha"
             />
           </div>
-          <div className="btn">
             <Btn txt={"Conectar"} click={(e) => handleClick(e)} />
-          </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
